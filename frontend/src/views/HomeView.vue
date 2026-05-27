@@ -15,30 +15,20 @@
   <!-- Default Home Page -->
   <div
     v-else
-    class="relative flex min-h-screen flex-col overflow-hidden bg-gradient-to-br from-gray-50 via-primary-50/30 to-gray-100 dark:from-dark-950 dark:via-dark-900 dark:to-dark-950"
+    class="home-shell relative flex min-h-screen flex-col overflow-hidden bg-[#060a14] text-slate-100"
   >
     <!-- Background Decorations -->
     <div class="pointer-events-none absolute inset-0 overflow-hidden">
-      <div
-        class="absolute -right-40 -top-40 h-96 w-96 rounded-full bg-primary-400/20 blur-3xl"
-      ></div>
-      <div
-        class="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-primary-500/15 blur-3xl"
-      ></div>
-      <div
-        class="absolute left-1/3 top-1/4 h-72 w-72 rounded-full bg-primary-300/10 blur-3xl"
-      ></div>
-      <div
-        class="absolute bottom-1/4 right-1/4 h-64 w-64 rounded-full bg-primary-400/10 blur-3xl"
-      ></div>
-      <div
-        class="absolute inset-0 bg-[linear-gradient(rgba(20,184,166,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(20,184,166,0.03)_1px,transparent_1px)] bg-[size:64px_64px]"
-      ></div>
+      <div class="absolute -right-32 -top-32 h-[24rem] w-[24rem] rounded-full bg-cyan-500/20 blur-3xl"></div>
+      <div class="absolute -bottom-40 -left-32 h-[26rem] w-[26rem] rounded-full bg-blue-600/20 blur-3xl"></div>
+      <div class="absolute left-1/3 top-1/3 h-[18rem] w-[18rem] rounded-full bg-emerald-400/10 blur-3xl"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.08),transparent_40%)]"></div>
+      <div class="absolute inset-0 bg-[linear-gradient(rgba(148,163,184,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(148,163,184,0.06)_1px,transparent_1px)] bg-[size:56px_56px] opacity-25"></div>
     </div>
 
     <!-- Header -->
-    <header class="relative z-20 px-6 py-4">
-      <nav class="mx-auto flex max-w-6xl items-center justify-between">
+    <header class="relative z-20 px-6 py-5">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-xl">
         <!-- Logo -->
         <div class="flex items-center">
           <div class="h-10 w-10 overflow-hidden rounded-xl shadow-md">
@@ -57,7 +47,7 @@
             :href="docUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-dark-400 dark:hover:bg-dark-800 dark:hover:text-white"
+            class="rounded-lg p-2 text-slate-300 transition-colors hover:bg-white/10 hover:text-white"
             :title="t('home.viewDocs')"
           >
             <Icon name="book" size="md" />
@@ -66,7 +56,7 @@
           <!-- Theme Toggle -->
           <button
             @click="toggleTheme"
-            class="rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-dark-400 dark:hover:bg-dark-800 dark:hover:text-white"
+            class="rounded-lg p-2 text-slate-300 transition-colors hover:bg-white/10 hover:text-white"
             :title="isDark ? t('home.switchToLight') : t('home.switchToDark')"
           >
             <Icon v-if="isDark" name="sun" size="md" />
@@ -77,7 +67,7 @@
           <router-link
             v-if="isAuthenticated"
             :to="dashboardPath"
-            class="inline-flex items-center gap-1.5 rounded-full bg-gray-900 py-1 pl-1 pr-2.5 transition-colors hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700"
+            class="inline-flex items-center gap-1.5 rounded-full border border-cyan-400/30 bg-cyan-500/20 py-1 pl-1 pr-2.5 transition-colors hover:bg-cyan-500/30"
           >
             <span
               class="flex h-5 w-5 items-center justify-center rounded-full bg-gradient-to-br from-primary-400 to-primary-600 text-[10px] font-semibold text-white"
@@ -86,7 +76,7 @@
             </span>
             <span class="text-xs font-medium text-white">{{ t('home.dashboard') }}</span>
             <svg
-              class="h-3 w-3 text-gray-400"
+              class="h-3 w-3 text-slate-300"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -102,7 +92,7 @@
           <router-link
             v-else
             to="/login"
-            class="inline-flex items-center rounded-full bg-gray-900 px-3 py-1 text-xs font-medium text-white transition-colors hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700"
+            class="inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-500/20 px-3 py-1 text-xs font-medium text-white transition-colors hover:bg-cyan-500/30"
           >
             {{ t('home.login') }}
           </router-link>
@@ -117,12 +107,10 @@
         <div class="mb-12 flex flex-col items-center justify-between gap-12 lg:flex-row lg:gap-16">
           <!-- Left: Text Content -->
           <div class="flex-1 text-center lg:text-left">
-            <h1
-              class="mb-4 text-4xl font-bold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"
-            >
+            <h1 class="mb-4 bg-gradient-to-r from-white via-cyan-100 to-cyan-300 bg-clip-text text-4xl font-bold text-transparent md:text-5xl lg:text-6xl">
               {{ siteName }}
             </h1>
-            <p class="mb-8 text-lg text-gray-600 dark:text-dark-300 md:text-xl">
+            <p class="mb-8 text-lg text-slate-300 md:text-xl">
               {{ siteSubtitle }}
             </p>
 
@@ -130,7 +118,7 @@
             <div>
               <router-link
                 :to="isAuthenticated ? dashboardPath : '/login'"
-                class="btn btn-primary px-8 py-3 text-base shadow-lg shadow-primary-500/30"
+                class="btn btn-primary home-cta px-8 py-3 text-base"
               >
                 {{ isAuthenticated ? t('home.goToDashboard') : t('home.getStarted') }}
                 <Icon name="arrowRight" size="md" class="ml-2" :stroke-width="2" />
@@ -178,27 +166,21 @@
 
         <!-- Feature Tags - Centered -->
         <div class="mb-12 flex flex-wrap items-center justify-center gap-4 md:gap-6">
-          <div
-            class="inline-flex items-center gap-2.5 rounded-full border border-gray-200/50 bg-white/80 px-5 py-2.5 shadow-sm backdrop-blur-sm dark:border-dark-700/50 dark:bg-dark-800/80"
-          >
+          <div class="home-chip inline-flex items-center gap-2.5 rounded-full px-5 py-2.5">
             <Icon name="swap" size="sm" class="text-primary-500" />
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">{{
+            <span class="text-sm font-medium text-slate-100">{{
               t('home.tags.subscriptionToApi')
             }}</span>
           </div>
-          <div
-            class="inline-flex items-center gap-2.5 rounded-full border border-gray-200/50 bg-white/80 px-5 py-2.5 shadow-sm backdrop-blur-sm dark:border-dark-700/50 dark:bg-dark-800/80"
-          >
+          <div class="home-chip inline-flex items-center gap-2.5 rounded-full px-5 py-2.5">
             <Icon name="shield" size="sm" class="text-primary-500" />
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">{{
+            <span class="text-sm font-medium text-slate-100">{{
               t('home.tags.stickySession')
             }}</span>
           </div>
-          <div
-            class="inline-flex items-center gap-2.5 rounded-full border border-gray-200/50 bg-white/80 px-5 py-2.5 shadow-sm backdrop-blur-sm dark:border-dark-700/50 dark:bg-dark-800/80"
-          >
+          <div class="home-chip inline-flex items-center gap-2.5 rounded-full px-5 py-2.5">
             <Icon name="chart" size="sm" class="text-primary-500" />
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">{{
+            <span class="text-sm font-medium text-slate-100">{{
               t('home.tags.realtimeBilling')
             }}</span>
           </div>
@@ -207,26 +189,22 @@
         <!-- Features Grid -->
         <div class="mb-12 grid gap-6 md:grid-cols-3">
           <!-- Feature 1: Unified Gateway -->
-          <div
-            class="group rounded-2xl border border-gray-200/50 bg-white/60 p-6 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 dark:border-dark-700/50 dark:bg-dark-800/60"
-          >
+          <div class="home-card group rounded-2xl p-6 transition-all duration-300">
             <div
               class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-500/30 transition-transform group-hover:scale-110"
             >
               <Icon name="server" size="lg" class="text-white" />
             </div>
-            <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 class="mb-2 text-lg font-semibold text-white">
               {{ t('home.features.unifiedGateway') }}
             </h3>
-            <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-400">
+            <p class="text-sm leading-relaxed text-slate-300">
               {{ t('home.features.unifiedGatewayDesc') }}
             </p>
           </div>
 
           <!-- Feature 2: Account Pool -->
-          <div
-            class="group rounded-2xl border border-gray-200/50 bg-white/60 p-6 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 dark:border-dark-700/50 dark:bg-dark-800/60"
-          >
+          <div class="home-card group rounded-2xl p-6 transition-all duration-300">
             <div
               class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 shadow-lg shadow-primary-500/30 transition-transform group-hover:scale-110"
             >
@@ -244,18 +222,16 @@
                 />
               </svg>
             </div>
-            <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 class="mb-2 text-lg font-semibold text-white">
               {{ t('home.features.multiAccount') }}
             </h3>
-            <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-400">
+            <p class="text-sm leading-relaxed text-slate-300">
               {{ t('home.features.multiAccountDesc') }}
             </p>
           </div>
 
           <!-- Feature 3: Billing & Quota -->
-          <div
-            class="group rounded-2xl border border-gray-200/50 bg-white/60 p-6 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 dark:border-dark-700/50 dark:bg-dark-800/60"
-          >
+          <div class="home-card group rounded-2xl p-6 transition-all duration-300">
             <div
               class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 shadow-lg shadow-purple-500/30 transition-transform group-hover:scale-110"
             >
@@ -273,10 +249,10 @@
                 />
               </svg>
             </div>
-            <h3 class="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 class="mb-2 text-lg font-semibold text-white">
               {{ t('home.features.balanceQuota') }}
             </h3>
-            <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-400">
+            <p class="text-sm leading-relaxed text-slate-300">
               {{ t('home.features.balanceQuotaDesc') }}
             </p>
           </div>
@@ -284,85 +260,75 @@
 
         <!-- Supported Providers -->
         <div class="mb-8 text-center">
-          <h2 class="mb-3 text-2xl font-bold text-gray-900 dark:text-white">
+          <h2 class="mb-3 text-2xl font-bold text-white">
             {{ t('home.providers.title') }}
           </h2>
-          <p class="text-sm text-gray-600 dark:text-dark-400">
+          <p class="text-sm text-slate-300">
             {{ t('home.providers.description') }}
           </p>
         </div>
 
         <div class="mb-16 flex flex-wrap items-center justify-center gap-4">
           <!-- Claude - Supported -->
-          <div
-            class="flex items-center gap-2 rounded-xl border border-primary-200 bg-white/60 px-5 py-3 ring-1 ring-primary-500/20 backdrop-blur-sm dark:border-primary-800 dark:bg-dark-800/60"
-          >
+          <div class="home-provider flex items-center gap-2 rounded-xl px-5 py-3">
             <div
               class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-orange-400 to-orange-500"
             >
               <span class="text-xs font-bold text-white">C</span>
             </div>
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">{{ t('home.providers.claude') }}</span>
+            <span class="text-sm font-medium text-slate-100">{{ t('home.providers.claude') }}</span>
             <span
               class="rounded bg-primary-100 px-1.5 py-0.5 text-[10px] font-medium text-primary-600 dark:bg-primary-900/30 dark:text-primary-400"
               >{{ t('home.providers.supported') }}</span
             >
           </div>
           <!-- GPT - Supported -->
-          <div
-            class="flex items-center gap-2 rounded-xl border border-primary-200 bg-white/60 px-5 py-3 ring-1 ring-primary-500/20 backdrop-blur-sm dark:border-primary-800 dark:bg-dark-800/60"
-          >
+          <div class="home-provider flex items-center gap-2 rounded-xl px-5 py-3">
             <div
               class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-green-500 to-green-600"
             >
               <span class="text-xs font-bold text-white">G</span>
             </div>
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">GPT</span>
+            <span class="text-sm font-medium text-slate-100">GPT</span>
             <span
               class="rounded bg-primary-100 px-1.5 py-0.5 text-[10px] font-medium text-primary-600 dark:bg-primary-900/30 dark:text-primary-400"
               >{{ t('home.providers.supported') }}</span
             >
           </div>
           <!-- Gemini - Supported -->
-          <div
-            class="flex items-center gap-2 rounded-xl border border-primary-200 bg-white/60 px-5 py-3 ring-1 ring-primary-500/20 backdrop-blur-sm dark:border-primary-800 dark:bg-dark-800/60"
-          >
+          <div class="home-provider flex items-center gap-2 rounded-xl px-5 py-3">
             <div
               class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-blue-600"
             >
               <span class="text-xs font-bold text-white">G</span>
             </div>
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">{{ t('home.providers.gemini') }}</span>
+            <span class="text-sm font-medium text-slate-100">{{ t('home.providers.gemini') }}</span>
             <span
               class="rounded bg-primary-100 px-1.5 py-0.5 text-[10px] font-medium text-primary-600 dark:bg-primary-900/30 dark:text-primary-400"
               >{{ t('home.providers.supported') }}</span
             >
           </div>
           <!-- Antigravity - Supported -->
-          <div
-            class="flex items-center gap-2 rounded-xl border border-primary-200 bg-white/60 px-5 py-3 ring-1 ring-primary-500/20 backdrop-blur-sm dark:border-primary-800 dark:bg-dark-800/60"
-          >
+          <div class="home-provider flex items-center gap-2 rounded-xl px-5 py-3">
             <div
               class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-rose-500 to-pink-600"
             >
               <span class="text-xs font-bold text-white">A</span>
             </div>
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">{{ t('home.providers.antigravity') }}</span>
+            <span class="text-sm font-medium text-slate-100">{{ t('home.providers.antigravity') }}</span>
             <span
               class="rounded bg-primary-100 px-1.5 py-0.5 text-[10px] font-medium text-primary-600 dark:bg-primary-900/30 dark:text-primary-400"
               >{{ t('home.providers.supported') }}</span
             >
           </div>
           <!-- More - Coming Soon -->
-          <div
-            class="flex items-center gap-2 rounded-xl border border-gray-200/50 bg-white/40 px-5 py-3 opacity-60 backdrop-blur-sm dark:border-dark-700/50 dark:bg-dark-800/40"
-          >
+          <div class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-5 py-3 opacity-70 backdrop-blur-sm">
             <div
               class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-gray-500 to-gray-600"
             >
               <span class="text-xs font-bold text-white">+</span>
             </div>
-            <span class="text-sm font-medium text-gray-700 dark:text-dark-200">{{ t('home.providers.more') }}</span>
+            <span class="text-sm font-medium text-slate-100">{{ t('home.providers.more') }}</span>
             <span
               class="rounded bg-gray-100 px-1.5 py-0.5 text-[10px] font-medium text-gray-500 dark:bg-dark-700 dark:text-dark-400"
               >{{ t('home.providers.soon') }}</span
@@ -373,11 +339,11 @@
     </main>
 
     <!-- Footer -->
-    <footer class="relative z-10 border-t border-gray-200/50 px-6 py-8 dark:border-dark-800/50">
+    <footer class="relative z-10 border-t border-white/10 px-6 py-8">
       <div
         class="mx-auto flex max-w-6xl flex-col items-center justify-center gap-4 text-center sm:flex-row sm:text-left"
       >
-        <p class="text-sm text-gray-500 dark:text-dark-400">
+        <p class="text-sm text-slate-400">
           &copy; {{ currentYear }} {{ siteName }}. {{ t('home.footer.allRightsReserved') }}
         </p>
         <div class="flex items-center gap-4">
@@ -386,7 +352,7 @@
             :href="docUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-dark-400 dark:hover:text-white"
+            class="text-sm text-slate-400 transition-colors hover:text-white"
           >
             {{ t('home.docs') }}
           </a>
@@ -394,7 +360,7 @@
             :href="githubUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="text-sm text-gray-500 transition-colors hover:text-gray-700 dark:text-dark-400 dark:hover:text-white"
+            class="text-sm text-slate-400 transition-colors hover:text-white"
           >
             GitHub
           </a>
@@ -481,6 +447,49 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.home-shell {
+  background-image:
+    radial-gradient(900px 500px at 10% -10%, rgba(45, 212, 191, 0.12), transparent 60%),
+    radial-gradient(700px 500px at 90% 0%, rgba(59, 130, 246, 0.18), transparent 60%),
+    linear-gradient(180deg, #070b16 0%, #050913 45%, #04070f 100%);
+}
+
+.home-cta {
+  background: linear-gradient(135deg, #06b6d4 0%, #2563eb 100%);
+  box-shadow: 0 10px 35px rgba(6, 182, 212, 0.35);
+}
+
+.home-cta:hover {
+  box-shadow: 0 14px 40px rgba(37, 99, 235, 0.45);
+}
+
+.home-chip {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+}
+
+.home-card {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.78), rgba(11, 18, 32, 0.62));
+  backdrop-filter: blur(14px);
+}
+
+.home-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 189, 248, 0.45);
+  box-shadow:
+    0 18px 32px rgba(2, 6, 23, 0.55),
+    0 0 0 1px rgba(34, 211, 238, 0.15);
+}
+
+.home-provider {
+  border: 1px solid rgba(34, 211, 238, 0.35);
+  background: rgba(34, 211, 238, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.08);
+  backdrop-filter: blur(10px);
+}
+
 /* Terminal Container */
 .terminal-container {
   position: relative;
@@ -490,11 +499,13 @@ onMounted(() => {
 /* Terminal Window */
 .terminal-window {
   width: 420px;
-  background: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+  max-width: calc(100vw - 3rem);
+  background: linear-gradient(145deg, #0b1426 0%, #0b1021 100%);
   border-radius: 14px;
   box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 25px 50px -12px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(34, 211, 238, 0.25),
+    0 0 32px rgba(37, 99, 235, 0.18),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   overflow: hidden;
   transform: perspective(1000px) rotateX(2deg) rotateY(-2deg);
